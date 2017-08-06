@@ -1,7 +1,7 @@
 function getJSON(url, successHandler, errorHandler) {
-    var xhr = typeof XMLHttpRequest !== 'undefined' ?
-        new XMLHttpRequest() :
-        new ActiveXObject('Microsoft.XMLHTTP');
+    var xhr = typeof XMLHttpRequest !== 'undefined'
+        ? new XMLHttpRequest()
+        : new ActiveXObject('Microsoft.XMLHTTP');
 
     xhr.open('GET', url);
 
@@ -32,8 +32,9 @@ function showPosts(data) {
     for (i = 0; i < data.length; i++) {
         div = document.createElement('div');
         div.className = 'posts';
-        div.innerHTML = 'title: ' + data[i].title + ' autor: ' + data[i].author +
-            ' id: ' + data[i].id;
+        div.innerHTML = 'title: ' + data[i].title
+                      + ' autor: ' + data[i].author
+                      + ' id: ' + data[i].id;
 
         document.body.insertBefore(div, document.body.firstChild);
     }
@@ -43,22 +44,25 @@ getJSON('http://localhost:3000/posts', function (data) {
     showPosts(data);
 
     console.log(data);
-}, function (status) {
+},
+    function (status) {
     console.log('Something went wrong.', status);
 });
 
 function addPost(data) {
     div = document.createElement('div');
     div.className = 'posts';
-    div.innerHTML = 'title: ' + data.title + ' autor: ' + data.author + ' id: ' + data.id;
+    div.innerHTML = 'title: ' + data.title
+                  + ' autor: ' + data.author
+                  + ' id: ' + data.id;
 
     document.body.insertBefore(div, document.body.firstChild);
 }
 
 function postJSON(url, successHandler, errorHandler) {
-    var xhr = typeof XMLHttpRequest !== 'undefined' ?
-            new XMLHttpRequest() :
-            new ActiveXObject('Microsoft.XMLHTTP'),
+    var xhr = typeof XMLHttpRequest !== 'undefined'
+            ? new XMLHttpRequest()
+            : new ActiveXObject('Microsoft.XMLHTTP'),
         responseType = 'responseType' in xhr,
         title = document.getElementsByName('title')[0].value,
         author = document.getElementsByName('author')[0].value;
